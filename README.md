@@ -1,7 +1,16 @@
-# Tauri + SvelteKit + TypeScript
+# Meras
 
-This template should help get you started developing with Tauri, SvelteKit and TypeScript in Vite.
+Meras a modular and highly extensible calendar with a minimalist and modern design capable of supporting advanced management of events and tasks.
 
-## Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer).
+## Roadmap
+- [ ] Calendar Backend
+- [ ] Calendar UI
+- [ ] Displaying Event/Tasks
+- [ ] Drag and Drop
+- [ ] Minimal Extension API
+- [ ] UI Polish
+- [ ] Appearance Customization
+- [ ] Full Extension API
+- [ ] Default Extensions
+- [ ] Mobile Builds
+- [ ] Web Build
