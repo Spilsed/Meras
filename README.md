@@ -3,6 +3,7 @@
 Meras a modular and highly extensible calendar with a minimalist and modern design capable of supporting advanced management of events and tasks.
 
 ## Roadmap
+
 - [ ] Calendar Backend
 - [ ] Calendar UI
 - [ ] Displaying Event/Tasks
