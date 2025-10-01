@@ -61,7 +61,7 @@ fn query_events(app_handle: AppHandle) -> Result<Vec<Event>> {
 }
 
 #[tauri::command]
-pub fn insert_event(app_handle: AppHandle, datetime: u64, duration: u16, title: &str, description: &str) -> Result<()> {
+pub fn insert_event(app_handle: AppHandle, datetime: u64, duration: u16, title: &str, description: &str) -> Result<(), String> {
     let conn = get_connection(app_handle);
 
     conn.execute(
