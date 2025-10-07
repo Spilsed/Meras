@@ -20,3 +20,7 @@ export function month_index_to_name(index: number): string {
         return 'UNK';
     }
 }
+
+export function days_in_month(month: number, year: number) {
+    return new Date(year, month + 1, 0).getDate();
+}
