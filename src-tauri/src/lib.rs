@@ -7,7 +7,7 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             db::create_database,
             db::insert_event,
-            db::get_events_for_month
+            db::query_events_between
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

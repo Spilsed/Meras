@@ -3,18 +3,13 @@
 
     import { StepBack, StepForward } from '@lucide/svelte';
 
-    import { calendarState } from '$lib/state/calendar-state.svelte';
+    import { calendarState, type CalendarEvent } from '$lib/state/calendar-state.svelte';
     import { month_index_to_name } from '$lib/formatting';
 
     let month_name = $derived(month_index_to_name(calendarState.currentDate.getMonth()));
 
-    invoke('create_database');
-
-    $effect(() => {
-        invoke('get_events_for_month', {
-            monthIndex: calendarState.currentDate.getMonth(),
-            year: calendarState.currentDate.getFullYear(),
-        }).then((events) => console.log(events));
+    invoke('create_database').then(() => {
+        calendarState.reloadEvents();
     });
 </script>
 
@@ -36,7 +31,7 @@
         >
             <StepForward size="20" />
         </button>
-        <h1 class="text-xl w-15 text-right">{calendarState.currentDate.getFullYear()}</h1>
+        <h1 class="text-xl w-15 text-center">{calendarState.currentDate.getFullYear()}</h1>
     </div>
     <div class="flex items-center gap-2">
         <h1 class="text-center text-xl w-30">

@@ -8,7 +8,7 @@ use std::fs;
 pub struct Event {
     id: i32,
     datetime: u64,
-    duration: Option<u16>,
+    duration: Option<u32>,
     title: String,
     description: Option<String>,
 }
@@ -61,6 +61,34 @@ fn query_events(app_handle: AppHandle) -> Result<Vec<Event>> {
 }
 
 #[tauri::command]
+pub fn query_events_between(app_handle: AppHandle, start: u64, end: u64) -> Result<Vec<Event>, String> {
+    let conn = get_connection(app_handle);
+
+    let mut stmt = conn.prepare("SELECT id, datetime, duration, title, description FROM events WHERE datetime BETWEEN ?1 AND ?2").map_err(|err| err.to_string())?;
+    let event_iter = stmt.query_map(params![start, end], |row| {
+        Ok(Event {
+            id: row.get(0)?,
+            datetime: row.get(1)?,
+            duration: row.get(2)?,
+            title: row.get(3)?,
+            description: row.get(4)?,
+        })
+    }).map_err(|err| err.to_string())?;
+
+    let mut output = vec![];
+
+    for event in event_iter {
+        if event.is_ok() {
+        output.push(event.unwrap());
+        } else {
+            println!("{:?}", event);
+        }
+    }
+
+    Ok(output)
+}
+
+#[tauri::command]
 pub fn insert_event(app_handle: AppHandle, datetime: u64, duration: u16, title: &str, description: &str) -> Result<(), String> {
     let conn = get_connection(app_handle);
 
@@ -95,23 +123,4 @@ fn delete_event(app_handle: AppHandle, id: i32) -> Result<()> {
     conn.execute("DELETE FROM events WHERE id = ?1", params![id])?;
 
     Ok(())
-}
-
-#[tauri::command]
-pub fn get_events_for_month(app_handle: AppHandle, month_index: u32, year: i32) -> Result<Vec<Event>, ()> {
-    let events = query_events(app_handle).unwrap();
-
-    let mut event_output: Vec<Event> = vec![];
-
-    for event in events {
-        let datetime = Utc.timestamp_opt(event.datetime as i64, 0).unwrap();
-
-        if datetime.month0() == month_index {
-            if datetime.year() == year {
-                event_output.push(event);
-            }
-        }
-    }
-
-    Ok(event_output)
 }
