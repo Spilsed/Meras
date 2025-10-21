@@ -4,9 +4,9 @@ Meras a modular and highly extensible calendar with a minimalist and modern desi
 
 ## Roadmap
 
-- [ ] Calendar Backend
+- [x] Calendar Backend
 - [ ] Calendar UI
-- [ ] Displaying Event/Tasks
+- [x] Displaying Event/Tasks
 - [ ] Drag and Drop
 - [ ] Minimal Extension API
 - [ ] UI Polish
