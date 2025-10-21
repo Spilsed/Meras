@@ -13,7 +13,7 @@ export const month_names: Map<number, string> = new Map([
     [11, 'December'],
 ]);
 
-export function month_index_to_name(index: number): string {
+export function monthIndexToName(index: number): string {
     if (index >= 0 && index <= 11) {
         return month_names.get(index)!;
     } else {
@@ -21,6 +21,16 @@ export function month_index_to_name(index: number): string {
     }
 }
 
-export function days_in_month(month: number, year: number) {
+export function getDaysInMonth(month: number, year: number) {
     return new Date(year, month + 1, 0).getDate();
+}
+
+export function getFirstSundayOfMonth(date: Date): number {
+    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    const dayOfWeek = firstDay.getDay();
+    const daysToAdd = (6 - dayOfWeek) % 7;
+
+    firstDay.setDate(1 + daysToAdd);
+
+    return firstDay.getDate();
 }

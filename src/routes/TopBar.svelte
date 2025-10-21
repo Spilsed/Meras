@@ -4,9 +4,9 @@
     import { StepBack, StepForward } from '@lucide/svelte';
 
     import { calendarState, type CalendarEvent } from '$lib/state/calendar-state.svelte';
-    import { month_index_to_name } from '$lib/formatting';
+    import { monthIndexToName } from '$lib/formatting';
 
-    let month_name = $derived(month_index_to_name(calendarState.currentDate.getMonth()));
+    let month_name = $derived(monthIndexToName(calendarState.currentDate.getMonth()));
 
     invoke('create_database').then(() => {
         calendarState.reloadEvents();
