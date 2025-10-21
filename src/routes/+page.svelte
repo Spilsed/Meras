@@ -1,18 +1,19 @@
 <script lang="ts">
-    import { days_in_month } from '$lib/formatting';
+    import { getDaysInMonth, getFirstSundayOfMonth } from '$lib/formatting';
     import { calendarState } from '$lib/state/calendar-state.svelte';
     import Event from './Event.svelte';
 
+    let dayOffset: number = $state(getFirstSundayOfMonth(calendarState.currentDate));
+    let daysInMonth: number = $state(
+        getDaysInMonth(
+            calendarState.currentDate.getMonth(),
+            calendarState.currentDate.getFullYear(),
+        ),
+    );
     let days: number[] = $state([]);
 
-    for (let i: number = 0; i < 30 + 5; i++) {
-        days.push(
-            i %
-                days_in_month(
-                    calendarState.currentDate.getMonth(),
-                    calendarState.currentDate.getFullYear(),
-                ),
-        );
+    for (let i: number = dayOffset; i < daysInMonth; i++) {
+        days.push(i % daysInMonth);
     }
 </script>
 
