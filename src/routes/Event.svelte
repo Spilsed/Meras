@@ -33,7 +33,7 @@
     >
         <div class="text-left">
             <h1 class="font-bold text-xl">{calendarEvent.title}</h1>
-            <p class="text-md">{calendarEvent.description}</p>
+            <p class="text-md mb-10">{calendarEvent.description}</p>
             <p class="font-light italic">{calendarEvent.datetime.toLocaleString()}</p>
         </div>
     </div>
