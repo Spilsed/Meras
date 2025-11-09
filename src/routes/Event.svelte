@@ -15,16 +15,15 @@
     let showPanel = $state(false);
 </script>
 
-<div
-    class="text-center bg-zinc-500 rounded-lg text-white hover:cursor-pointer"
+<button
+    class="text-center bg-zinc-500 w-full rounded-lg text-white hover:cursor-pointer"
     use:floatingRef
     onclick={() => (showPanel = !showPanel)}
-    role="button"
     tabindex="0"
 >
     <h1 class="font-bold">{calendarEvent.title}</h1>
     <p class="font-normal text-md">{calendarEvent.description}</p>
-</div>
+</button>
 
 {#if showPanel}
     <div
