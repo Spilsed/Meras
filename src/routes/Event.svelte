@@ -19,7 +19,6 @@
     class="text-center bg-zinc-500 w-full rounded-lg text-white hover:cursor-pointer"
     use:floatingRef
     onclick={() => (showPanel = !showPanel)}
-    tabindex="0"
 >
     <h1 class="font-bold">{calendarEvent.title}</h1>
     <p class="font-normal text-md">{calendarEvent.description}</p>
