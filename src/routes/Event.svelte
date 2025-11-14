@@ -16,7 +16,7 @@
 </script>
 
 <button
-    class="text-center bg-zinc-500 w-full rounded-lg text-white hover:cursor-pointer"
+    class="text-center bg-surface-700 w-full rounded-lg text-white hover:cursor-pointer"
     use:floatingRef
     onclick={() => (showPanel = !showPanel)}
 >
@@ -26,7 +26,7 @@
 
 {#if showPanel}
     <div
-        class="absolute bg-zinc-500 rounded-lg text-white p-2 w-[20vw]"
+        class="absolute bg-surface-700 rounded-lg text-white p-2 w-[20vw]"
         use:floatingContent
         role="button"
         tabindex="0"

@@ -13,7 +13,7 @@
     });
 </script>
 
-<div class="h-[5vh] flex justify-center items-center gap-2">
+<div class="h-[5vh] flex justify-center items-center gap-2 bg-surface-800 text-white">
     <div class="flex items-center gap-2">
         <button
             class="hover:cursor-pointer w-5"

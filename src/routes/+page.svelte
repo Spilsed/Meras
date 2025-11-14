@@ -17,7 +17,7 @@
     }
 </script>
 
-<div class="w-full h-full">
+<div class="w-full h-full text-white bg-surface-800">
     <div class="grid grid-cols-7 text-center">
         {#each ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] as day}
             <div>
@@ -27,7 +27,7 @@
     </div>
     <div class="grid grid-cols-7 grid-rows-5 h-screen">
         {#each days as day}
-            <div class="w-full h-full bg-gray-200 p-2 border-1 border-black">
+            <div class="w-full h-full bg-surface-800 p-2 border-1 border-primary-300">
                 <h1 class="w-full text-center">{day + 1}</h1>
                 {#each calendarState.getEventsOnDay(day) as calendarEvent}
                     <Event {calendarEvent} />
