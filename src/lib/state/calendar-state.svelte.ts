@@ -100,7 +100,10 @@ export class CalendarState {
         let output: CalendarEvent[] = [];
 
         this.calendarEvents.forEach((calendarEvent) => {
-            if (calendarEvent.datetime.getDate() - 1 == day) {
+            if (
+                calendarEvent.datetime.getDate() - 1 == day &&
+                calendarEvent.datetime.getFullYear() == this.currentDate.getFullYear()
+            ) {
                 console.log(calendarEvent.datetime.getTime(), calendarEvent.datetime.getDate());
                 output.push(calendarEvent);
             }
