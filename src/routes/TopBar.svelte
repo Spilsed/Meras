@@ -3,7 +3,7 @@
 
     import { StepBack, StepForward } from '@lucide/svelte';
 
-    import { calendarState, type CalendarEvent } from '$lib/state/calendar-state.svelte';
+    import { calendarState } from '$lib/state/calendar-state.svelte';
     import { monthIndexToName } from '$lib/formatting';
 
     let month_name = $derived(monthIndexToName(calendarState.currentDate.getMonth()));
